@@ -14,8 +14,9 @@ jobs:
           sudo apt update
           sudo apt install -y git zip unzip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev cmake libffi-dev libssl-dev
           pip install --user --upgrade Cython==0.29.33 buildozer
-          # অটোমেটিক লাইসেন্স অ্যাকসেপ্ট করার কমান্ড
-          yes | buildozer android signatures || true
+          # আগের ক্যাশ ক্লিয়ার করা
+          rm -rf .buildozer
+          # বিল্ড শুরু
           yes | buildozer -v android debug
       - name: Upload APK
         uses: actions/upload-artifact@v4
