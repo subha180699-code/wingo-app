@@ -11,8 +11,8 @@ fullscreen = 0
 android.archs = armeabi-v7a
 android.api = 31
 android.minapi = 21
-android.sdk = 31
-android.ndk = 25b
+android.ndk_path = 
+android.sdk_path = 
 android.accept_sdk_license = True
 p4a.branch = master
 
