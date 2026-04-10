@@ -2,22 +2,22 @@ name: Build APK
 on: [push]
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.9'
-      - name: Install Dependencies
+      - name: Build APK
         run: |
           sudo apt update
           sudo apt install -y git zip unzip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev cmake libffi-dev libssl-dev
           pip install --user --upgrade Cython==0.29.33 buildozer
-      - name: Build APK
-        run: |
+          # পুরনো সব এরর ফাইল পরিষ্কার করা
           rm -rf .buildozer
-          buildozer -v android debug
+          # বিল্ড শুরু
+          yes | buildozer -v android debug
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
